@@ -12,7 +12,20 @@ Open `site/index.html` directly, or serve the site locally:
 python3 -m http.server 8080 --bind 127.0.0.1 --directory site
 ```
 
-## Vercel
+## GitHub Pages
+
+The site is hosted on GitHub Pages at https://ederntjw.github.io/parrot-portfolio/.
+
+Pages publishes the root of the `gh-pages` branch, exported from `site/` on `main`. `.nojekyll` disables Jekyll processing. To publish an updated site after committing changes on `main`:
+
+```sh
+git subtree split --prefix=site -b pages-release
+git push origin pages-release:gh-pages
+```
+
+Use a fresh local release-branch name for each export. Changes on `main` are not live until the exported branch is pushed. No paid hosting or custom domain is required.
+
+## Optional Vercel setup
 
 Import this repository with framework preset **Other**, root directory **./**, and output directory **site**. Leave build/install commands unset. The root `vercel.json` specifies the static output directory. Connect the repository through Vercel's GitHub integration for automatic deployments.
 
